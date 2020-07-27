@@ -1,0 +1,15 @@
+version: '3'
+services:
+  blog:
+    image: ghost
+    restart: unless-stopped
+    ports:
+      - 2368:2368
+    volumes:
+      - ./:/var/lib/ghost/content/themes/ghost-zengarden
+      - /var/lib/ghost/content/themes/ghost-zengarden/node_modules
+      - ./.tmp/data:/var/lib/ghost/content/data
+      - ./.tmp/images:/var/lib/ghost/content/images
+      - ./.tmp/settings:/var/lib/ghost/content/settings
+    environment:
+      - NODE_ENV=development
